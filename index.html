@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EduMAS 2026 - رياضيات 3 إعدادي</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-breathtaking-blue">
+
+<div id="anim-container"></div>
+
+<div id="settings" class="settings-panel" style="width: 280px; max-height: 80vh; overflow-y: auto;">
+  <h5>تخصيص المظهر الشامل 🎨</h5>
+  
+  <label>الخط (Font):</label>
+  <select id="font-select" onchange="document.body.style.fontFamily=this.value">
+    <option value="system-ui, -apple-system, sans-serif">الأساسي (System)</option>
+    <option value="'Cairo', sans-serif">كايرو (Cairo)</option>
+    <option value="'Tajawal', sans-serif">تجوال (Tajawal)</option>
+    <option value="'Amiri', serif">أميري (Amiri)</option>
+  </select>
+
+  <label>الخلفية (Background):</label>
+  <select id="bg-select" onchange="document.body.className=this.value">
+    <option value="bg-breathtaking-blue">الأزرق الأخاذ 🌌</option>
+    <option value="bg-diamond">النسخة الماسية 💎</option>
+    <option value="bg-silver">النسخة الفضية 🥈</option>
+    <option value="bg-gold">النسخة الذهبية 👑</option>
+    <option value="bg-default">الأساسي (داكن)</option>
+    <option value="bg-gradient">تدرج ليلي</option>
+    <option value="bg-blue">أزرق تقني</option>
+    <option value="bg-forest">غابة مظلمة</option>
+    <option value="bg-notebook">ورق مسطر</option>
+  </select>
+
+  <label>إبراز السمات (Accent Color):</label>
+  <div style="display: flex; gap: 5px; margin-bottom: 12px; justify-content: space-between;">
+      <button style="background:#5ce1ff; width:30px; height:30px; border-radius:50%; border:none; cursor:pointer;" onclick="document.documentElement.style.setProperty('--cy', '#5ce1ff'); document.documentElement.style.setProperty('--ye', '#ffd166');"></button>
+      <button style="background:#ffd166; width:30px; height:30px; border-radius:50%; border:none; cursor:pointer;" onclick="document.documentElement.style.setProperty('--cy', '#ffd166'); document.documentElement.style.setProperty('--ye', '#5ce1ff');"></button>
+      <button style="background:#ff8fb1; width:30px; height:30px; border-radius:50%; border:none; cursor:pointer;" onclick="document.documentElement.style.setProperty('--cy', '#ff8fb1'); document.documentElement.style.setProperty('--ye', '#7dffb2');"></button>
+      <button style="background:#7dffb2; width:30px; height:30px; border-radius:50%; border:none; cursor:pointer;" onclick="document.documentElement.style.setProperty('--cy', '#7dffb2'); document.documentElement.style.setProperty('--ye', '#ff8fb1');"></button>
+      <button style="background:#a5b4fc; width:30px; height:30px; border-radius:50%; border:none; cursor:pointer;" onclick="document.documentElement.style.setProperty('--cy', '#a5b4fc'); document.documentElement.style.setProperty('--ye', '#fca5a5');"></button>
+  </div>
+
+  <label>الزينات المتحركة (Animations):</label>
+  <select id="anim-select" onchange="updateAnim()">
+    <option value="none">بدون</option>
+    <option value="stars">نجوم متلألئة ⭐</option>
+    <option value="butterflies">فراشات 🦋</option>
+    <option value="leaves">أوراق شجر 🍁</option>
+    <option value="pens">أدوات هندسية ✏️</option>
+  </select>
+
+  <label>طبقة الظهور (Z-Index):</label>
+  <select id="z-select" onchange="document.getElementById('anim-container').style.zIndex = this.value">
+    <option value="1">خلف المحتوى (1)</option>
+    <option value="50">فوق المحتوى (50)</option>
+    <option value="150">فوق كل شيء (150)</option>
+  </select>
+
+  <label>شفافية الزينات: <span id="op-val">20</span>%</label>
+  <input type="range" id="anim-opacity" min="5" max="100" value="20" oninput="document.getElementById('op-val').innerText=this.value; document.getElementById('anim-container').style.opacity = this.value / 100;">
+</div>
+
+<main id="app" style="position:relative; z-index:10;"></main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
